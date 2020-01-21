@@ -34,9 +34,11 @@ a:hover {
 }
 .hash{
     border-style: outset;
-    border-height: 30%;
-}
 
+}
+ul{
+    list-style: none;
+}
 
 #headerPopup{
   width:75%;
