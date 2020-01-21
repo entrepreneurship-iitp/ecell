@@ -8,8 +8,7 @@ body {
     margin: 0;
     background: #FFF;
     font-family: 'Open Sans', sans-serif;
-    border: solid;
-    border-color: black;
+   
 }
 body a {
     transition: 0.5s all;
@@ -33,24 +32,70 @@ body a:focus,
 a:hover {
     text-decoration: none;
 }
-
-input[type="button"],
-input[type="submit"] {
-    transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
+.hash{
+    border-style: outset;
+    border-height: 30%;
 }
 
-input[type="button"]:hover,
-input[type="submit"]:hover {
-    transition: 0.5s all;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
+
+#headerPopup{
+  width:75%;
+  margin:0 auto;
 }
+
+#headerPopup iframe{
+  width:100%;
+  margin:0 auto;
+}
+.last{
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5em;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 26px;
+  padding: 5px;
+  width: 800px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+
+
 
 h1,
 h2,
@@ -116,7 +161,7 @@ header {
     position: absolute;
     z-index: 9;
     width: 100%;
-    background: #282828;
+    background: black;
     padding: 1em 0;
 }
 
@@ -132,7 +177,15 @@ header {
 }
 nav.mnu {
     width: 50%;
-    text-align: center;
+    
+   
+}
+.hi{
+    text-align-last: center;
+    color: #fff;
+}
+.hello{
+    text-align:center;
 }
 /* Since we'll have the "ul li" "float:left"
  * we need to add a clear after the container. */
@@ -159,6 +212,8 @@ nav ul li {
     margin: 0px;
     display: inline-block;
 }
+
+
 
 /* Styling the links */
 
@@ -418,8 +473,8 @@ li > a:only-child:after {
     letter-spacing: 2px;
 }
 .advantage_left1 img {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
 }
 a.banner-button, button.submit {
@@ -460,7 +515,7 @@ a.banner-button2:hover {
     background: #9acff2;
 }
 .banner-bottom {
-    padding: 10em 0;
+    padding: 15em 0;
     box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.05);
 }
 .agileits-services-grids i {
@@ -485,7 +540,7 @@ p.subs {
 }
 /* services */
 h3.heading,h2.heading {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 700;
     color: #3e3e3e;
 }
@@ -653,25 +708,6 @@ ul.social_section_1info a:hover {
 
 .col-xs-12.col-sm-12.col-md-12.col-lg-12 {
 	padding: 0 20% 0 20%;
-}
-
-.form-title {
-	padding: 25px;
-	font-size: 30px;
-	font-weight: 300;
-}
-
-.form-group .form-control {
-	-webkit-box-shadow: none;
-	border-bottom: 1px;
-	border-style: none none solid none;
-	border-color:#ffd708;
-}
-
-.form-group .form-control:focus {
-	box-shadow: none;
-	border-width: 0 0 2px 0;
-	border-color: #000;
 }
 
 textarea {
@@ -860,7 +896,7 @@ label {
     text-align: center;
 }
 	.banner-bottom {
-    padding: 2em 5em 3em 5em;
+    padding: 5em 5em 3em 5em;
 }
 .agileits-services {
     padding: 3em 5em 3em 5em;
@@ -910,7 +946,7 @@ nav ul {
 @media(max-width: 736px) {
 
 	.banner-bottom {
-    padding: 2em 3em 3em 3em;
+    padding: 6em 3em 3em 3em;
 }
 .agileits-services {
     padding: 3em 3em 3em 3em;
@@ -991,7 +1027,7 @@ h1.heading {
     font-size: 1em;
 }
 .banner-bottom {
-    padding: 3em 0em 3em 0em;
+    padding: 6em 0em 3em 0em;
 }
 a.banner-button, button.submit {
     font-size: 1.2em;
@@ -1109,7 +1145,7 @@ section.news.text-center h4 {
     font-size: 1.3em;
 }
 .banner-bottom {
-    padding:3em 0em 3em 0em;
+    padding:6em 0em 3em 0em;
 }
 h1.heading {
     font-size: 1.7em;
