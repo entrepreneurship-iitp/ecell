@@ -12,6 +12,7 @@ CREATE TABLE `ambassador` (
   `password` varchar(20) NOT NULL,
   `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `hash` varchar(50) NOT NULL,
+  `points` INT(10) NOT NULL DEFAULT '0',
   `active` INT( 1 ) NOT NULL DEFAULT '0',
   `refcode` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
