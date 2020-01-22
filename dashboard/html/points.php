@@ -1,3 +1,19 @@
+<?php
+session_start();
+if(isset($_SESSION['login_user'])){
+    header("location: /ecell/signin/signup_ca.php");
+}
+if(isset($_POST['subData'])){
+    require("../../logout.php");
+}
+require("../../config.php");
+$sql="SELECT * FROM ambassador ORDER BY points DESC";
+$res=$mysqli->query($sql);
+$count=1;
+// var_dump($res);
+// $name=$_SESSION['login_user'];
+$name="Subhang";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +24,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>Profile | Campus Ambassador</title>
+    <title>Referrals | Campus Ambassador</title>
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Menu CSS -->
@@ -68,13 +84,8 @@
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
                     <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i
-                                    class="fa fa-search"></i></a> </form>
-                    </li>
-                    <li>
                         <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img"
-                                width="36" class="img-circle"><b class="hidden-xs">Steave</b></a>
+                                width="36" class="img-circle"><b class="hidden-xs"><?php echo $name;?></b></a>
                     </li>
                 </ul>
             </div>
@@ -105,14 +116,14 @@
                         <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw"
                                 aria-hidden="true"></i>Basic Table</a>
                     </li>
-                    
+    
                     <li>
                         <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Blank Page</a>
                     </li>
-                   
+        
                 </ul>
-            
+               
             </div>
         </div>
         <!-- ============================================================== -->
@@ -125,55 +136,52 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Profile page</h4>
+                        <h4 class="page-title">Leaderboard</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade
-                            to Pro</a>
+                    <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
+                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Logout</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Profile Page</li>
+                            <li class="active">Leaderboard</li>
                         </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <!-- <h3 class="box-title">Ranking</h3> -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Name</th>
+                                            <th>College</th>
+                                            <th>Points</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php while($row = $res->fetch_assoc()) {?>
+                                            <tr>
+                                                <td><?php echo $count; $count++; ?></td>
+                                                <td><?php echo $row['name']?></td>
+                                                <td><?php echo $row['college']?></td>
+                                                <td><?php echo $row['points']?></td>
+                                            </tr>
+                                        <?php };?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /.row -->
-                <!-- .row -->
-                <div class="row">
-                   
-                        <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="../plugins/images/large/img1.jpg">
-                                <div class="overlay-box">
-                                    <div class="user-content">
-                                        <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg"
-                                                class="thumb-lg img-circle" alt="img"></a>
-                                        <h4 class="text-white">User Name</h4>
-                                        <h5 class="text-white">info@myadmin.com</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-btm-box">
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-purple"><i class="ti-facebook"></i></p>
-                                    <h1>258</h1>
-                                </div>
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-blue"><i class="ti-twitter"></i></p>
-                                    <h1>125</h1>
-                                </div>
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-danger"><i class="ti-dribbble"></i></p>
-                                    <h1>556</h1>
-                                </div>
-                            </div>
-                       
-                    </div>
-                   
-    
-                <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> </footer>
+            <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com</footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
