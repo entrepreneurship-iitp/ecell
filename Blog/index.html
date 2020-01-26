@@ -5,10 +5,12 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
-
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 	<link rel="stylesheet" href="css/font-awesome.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 	
 
 </head>
@@ -45,17 +47,20 @@
                         <div class="advantage_left">
                              <h2><b>Om Deshmukh</b><span></span></h2>
                              <hr>
-														 <ul>
-														 	<li><span class="mt-4">• One of the Top 10 Data Scienitists in India.</span></li><br>
-															<li><span class="mt-4">• Founder and CEO of Tilde Hat.</span></li>
+							<ul>
+							<li><span class="mt-4">• One of the Top 10 Data Scienitists in India.</span></li><br>
+							<li><span class="mt-4">• Founder and CEO of Tilde Hat.</span></li>
 
 
-														 </ul>
-														 <hr>
-														 <a class="button" href=""><span><b>Interview</b></span> </span></a>
-														 <br>
-														 <br>
-											</div>
+							</ul>
+							<hr>
+							<a href="#videostory" class="button more" id="videolink"><span><b>Interview</b></span> </span></a>
+							<div id="videostory" class="mfp-hide">
+								<iframe width="100%" height="500" src="https://www.youtube.com/embed/xLiiO7XqObQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							</div>
+							<br>
+							<br>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -70,6 +75,11 @@
       
     </div>
   </footer>
-
+  <script>
+	  $('#videolink').magnificPopup({
+		  type:'inline',
+		  midClick:true
+	  })
+  </script>
 </body>
 </html>
