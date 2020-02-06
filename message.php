@@ -9,11 +9,13 @@
         $subject=$_POST['subject'];
         $sql="  INSERT INTO messages "."VALUES('$name','$email','$subject','$message')";
         if ($mysqli->query($sql) === TRUE) {
-            echo "Message Sent!";
+            echo "OK"; 
+            
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error";
         }
         
         $mysqli->close();
+        
     }
 ?>
