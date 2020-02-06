@@ -11,7 +11,7 @@
         if ($mysqli->query($sql) === TRUE) {
             echo "Message Sent!";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error!";
         }
         
         $mysqli->close();

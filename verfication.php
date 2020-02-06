@@ -1,25 +1,28 @@
 <?php
-    if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])){
+    if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['code']) && !empty($_GET['code'])){
         require('./config.php');
         $email=$_GET['email'];
-        $hash=$_GET['hash'];
-        $sql="SELECT * FROM ambassador WHERE webmail= '".$email."'";
+        $refcode=$_GET['code'];
+        $sql="SELECT * FROM users WHERE webmail= '".$email."'";
         $res=$mysqli->query($sql);
         if($res->num_rows > 0){
             $row = $res->fetch_assoc();
-            echo "<p>".$hash." CLoaker</p>";
-            echo "<p>".$row['hash']." Subhang</p>";
-            if($row['hash']!=$hash||$row['active']==1){
+            if(($row['refcode'] != $refcode) || ($row['active'] == 1)){
                 echo "Invalid session";
             }
             else{
-                $check = "UPDATE ambassador SET active=1 AND hash=0 WHERE webmail= '".$email."'";
+                $check = "UPDATE users SET active = 1 WHERE webmail= '".$email."'";
                 $confirm=$mysqli->query($check);
-                echo "<h1>HI".$row["name"]."</h1><br><p>Your referal code is ".$row["refcode"]."</p><p>Please login to check your account.</p>";
+                // echo "Verified!";
+                // sleep(3);
+                $subject = "Your referral Code from E-Cell IIT Patna";
+                $message="Verified!. This is your referral code ".$refcode.". Invite more of your friends with referral code to win exciting goodies from E-Cell IIT Patna.";
+                require('mail.php');
+                header("Location: ./signin/signup.php");
             }
         }
         else{
-            echo $mysqli->error;
+            echo "Invalid session";
         }
     }
 ?>
