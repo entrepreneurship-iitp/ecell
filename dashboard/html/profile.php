@@ -1,21 +1,27 @@
 <?php
 session_start();
-if(isset($_SESSION['login_user'])){
-    header("location: /ecell/signin/signup_ca.php");
+if(!isset($_SESSION['login_user'])){
+    header("location: /ecell/signin/signup.php");
 }
 if(isset($_POST['subData'])){
     require("../../logout.php");
 }
 require("../../config.php");
-$name="Subhang";
+$webmail=$_SESSION['login_user'];
 // $name=$_SESSION['login_user'];
-$sql="SELECT * FROM ambassador WHERE name='".$name."'";
+$sql="SELECT * FROM users WHERE webmail='".$webmail."'";
 $res=$mysqli->query($sql);
 $data=$res->fetch_assoc();
+
 $name=$data['name'];
 $points=$data['points'];
-$email=$data['webmail'];
 $college=$data['college'];
+$refcode =$data['refcode'];
+
+$sql="select count(name) as referrals from users where ref_by ='".$refcode."'";
+$res=$mysqli->query($sql);
+$data=$res->fetch_assoc();
+$referrals = $data['referrals'];
 ?>
 
 <!DOCTYPE html>
@@ -113,17 +119,17 @@ $college=$data['college'];
                                 aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
+                        <a href="profile.php" class="waves-effect"><i class="fa fa-user fa-fw"
                                 aria-hidden="true"></i>Profile</a>
                     </li>
                     <li>
-                        <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i>Basic Table</a>
+                        <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw"
+                                aria-hidden="true"></i>events</a>
                     </li>
                     
                     <li>
-                        <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
-                                aria-hidden="true"></i>Blank Page</a>
+                        <a href="ca.php" class="waves-effect"><i class="fa fa-columns fa-fw"
+                                aria-hidden="true"></i>Campus Ambassador</a>
                     </li>
                    
                 </ul>
@@ -162,18 +168,18 @@ $college=$data['college'];
                                         <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg"
                                                 class="thumb-lg img-circle" alt="img"></a>
                                         <h4 class="text-white"><?php echo $name;?></h4>
-                                        <h5 class="text-white"><?php echo $email;?></h5>
+                                        <h5 class="text-white"><?php echo $webmail;?></h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="user-btm-box">
                                 <div class="col-md-6 col-sm-6 text-center">
                                     <p class="text-blue"><i class="ti-twitter"></i></p>
-                                    <h1><?php echo $points; ?></h1>
+                                    <h1>Points: <?php echo $points; ?></h1>
                                 </div>
                                 <div class="col-md-4 col-sm-4 text-center">
                                     <p class="text-danger"><i class="ti-dribbble"></i></p>
-                                    <h1>556</h1>
+                                    <h1>Referrals: <?php echo $referrals; ?></h1>
                                 </div>
                             </div>
                        

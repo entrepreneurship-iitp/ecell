@@ -1,3 +1,40 @@
+<?php
+session_start();
+if(!isset($_SESSION['login_user'])){
+    header("location: /ecell/signin/signup.php");
+}
+if(isset($_POST['subData'])){
+    require("../../logout.php");
+}
+
+require("../../config.php");
+
+$webmail=$_SESSION['login_user'];
+// $name=$_SESSION['login_user'];
+$sql="SELECT * FROM users WHERE webmail='".$webmail."'";
+$res=$mysqli->query($sql);
+$data=$res->fetch_assoc();
+$name=$data['name'];
+$points=$data['points'];
+$college=$data['college'];
+$refcode =$data['refcode'];
+$ca =$data['ca'];
+
+if($ca ==0)
+{
+    header("Location: /ecell/dashboard/html/blank.php");
+    exit();
+}
+
+$sql="select count(name) as referrals from users where ref_by ='".$refcode."'";
+$res=$mysqli->query($sql);
+$data=$res->fetch_assoc();
+$referrals = $data['referrals'];
+$sql="SELECT * FROM users ORDER BY points DESC LIMIT 10";
+$res=$mysqli->query($sql);
+
+$count =1;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,6 +91,7 @@
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
+                   
                     <a class="logo" href="dashboard.html">
                         <!-- Logo icon image, you can use font-icon also -->
                         <b>
@@ -76,16 +114,9 @@
                     <li>
                         <a class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg" href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
+                    
                     <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> 
-                            <a href="">
-                                <i class="fa fa-search"></i>
-                            </a> 
-                        </form>
-                    </li>
-                    <li>
-                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b></a>
+                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $name;?></b></a>
                     </li>
                 </ul>
             </div>
@@ -107,14 +138,14 @@
                         <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Home</a>
                     </li>
                     <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                        <a href="profile.php" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                     </li>
                     <li>
                         <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Events</a>
                     </li>
     
                     <li>
-                        <a href="ca.html" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Campus Ambassador</a>
+                        <a href="ca.php" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Campus Ambassador</a>
                     </li>
     
 
@@ -154,7 +185,7 @@
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">659</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success"><?php echo $points;?></span></li>
                             </ul>
                         </div>
                     </div>
@@ -165,7 +196,18 @@
                                 <li>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">869</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple"><?php echo $referrals;?></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Your Referral Code</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash2"></div>
+                                </li>
+                                <li class="text-right"><h3 style="margin:0" ><?php echo $refcode ?></h3></li>
                             </ul>
                         </div>
                     </div>
@@ -187,66 +229,24 @@
                             </div>
                             <h3 class="box-title">Referrals</h3>
                             <div class="table-responsive">
-                                <table class="table">
+                            <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>NAME</th>
-                                            <th>STATUS</th>
-                                            <th>DATE</th>
-                                            <th>PRICE</th>
+                                            <th>Rank</th>
+                                            <th>Name</th>
+                                            <th>College</th>
+                                            <th>Points</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td class="txt-oflo">Elite admin</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 18, 2017</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td class="txt-oflo">Real Homes WP Theme</td>
-                                            <td>EXTENDED</td>
-                                            <td class="txt-oflo">April 19, 2017</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td class="txt-oflo">Ample Admin</td>
-                                            <td>EXTENDED</td>
-                                            <td class="txt-oflo">April 19, 2017</td>
-                                            <td><span class="text-info">$1250</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td class="txt-oflo">Medical Pro WP Theme</td>
-                                            <td>TAX</td>
-                                            <td class="txt-oflo">April 20, 2017</td>
-                                            <td><span class="text-danger">-$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td class="txt-oflo">Hosting press html</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 21, 2017</td>
-                                            <td><span class="text-success">$24</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td class="txt-oflo">Digital Agency PSD</td>
-                                            <td>SALE</td>
-                                            <td class="txt-oflo">April 23, 2017</td>
-                                            <td><span class="text-danger">-$14</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td class="txt-oflo">Helping Hands WP Theme</td>
-                                            <td>MEMBER</td>
-                                            <td class="txt-oflo">April 22, 2017</td>
-                                            <td><span class="text-success">$64</span></td>
-                                        </tr>
+                                        <?php while($row = $res->fetch_assoc()) {?>
+                                            <tr>
+                                                <td><?php echo $count; $count++; ?></td>
+                                                <td><?php echo $row['name']?></td>
+                                                <td><?php echo $row['college']?></td>
+                                                <td><?php echo $row['points']?></td>
+                                            </tr>
+                                        <?php };?>
                                     </tbody>
                                 </table>
                             </div>

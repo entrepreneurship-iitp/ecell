@@ -1,13 +1,13 @@
 <?php
 session_start();
-if(isset($_SESSION['login_user'])){
+if(!isset($_SESSION['login_user'])){
     header("location: /ecell/signin/signup_ca.php");
 }
 if(isset($_POST['subData'])){
     require("../../logout.php");
 }
 require("../../config.php");
-$sql="SELECT * FROM ambassador ORDER BY points DESC";
+$sql="SELECT * FROM users ORDER BY points DESC LIMIT 10";
 $res=$mysqli->query($sql);
 $count=1;
 // var_dump($res);
@@ -181,7 +181,7 @@ $name="Subhang";
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com</footer>
+            <footer class="footer text-center"> 2020 &copy; www.ecell-iitp.org</footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

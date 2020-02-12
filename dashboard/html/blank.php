@@ -1,3 +1,24 @@
+<?php
+
+        session_start();
+        if(!isset($_SESSION['login_user'])){
+            header("location: /ecell/signin/signup.php");
+        }
+        
+        require("../../config.php");
+        if(isset($_POST['button1'])) { 
+            
+            $sql = "UPDATE users SET ca = 1 WHERE webmail = '".$_SESSION['login_user']."'";
+
+            if ($mysqli->query($sql) === TRUE) {
+                header("Location: /ecell/dashboard/html/ca.php");
+                exit();
+            } else {
+              echo '<script>alert("Error! Try again.")</script>';
+            }
+
+        } 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -109,7 +130,7 @@
                    
                     <li>
                         <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
-                                aria-hidden="true"></i>Blank Page</a>
+                                aria-hidden="true"></i>Campus Ambassador</a>
                     </li>
                 </ul>
                
@@ -139,11 +160,10 @@
                     <!-- /.col-lg-12 -->
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Blank Page</h3>
-                        </div>
-                    </div>
+                    <form method="post"> 
+                        <input type="submit" name="button1"
+                                class="button" value="Register as CA" /> 
+                    </form> 
                 </div>
             </div>
             <!-- /.container-fluid -->
