@@ -1,5 +1,12 @@
+<?php
+    header("Pragma: no-cache");
+    header("Cache-Control: no-cache");
+    header("Expires: 0");
+    $amount=$_POST['amount'];
 
-<!DOCTYPE html>
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
 <head>
@@ -9,7 +16,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>Blank Page | Campus Ambassador Program</title>
+    <title>Payments | Campus Ambassador Program</title>
+    <meta name="GENERATOR" content="Evrsoft First Page">
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Menu CSS -->
@@ -47,7 +55,7 @@
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
                 <div class="top-left-part">
-                    <div style="background-color:  #2f323e;">
+                   <div style="background-color:  #2f323e;">
                     <!-- Logo -->
                     <a class="logo" href="dashboard.html">
                         <!-- Logo icon image, you can use font-icon also -->
@@ -68,7 +76,6 @@
                         <a class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg"
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
-                    
                     <li>
                         <a class="profile-pic" href="#"> <img src="../plugins/images/users/hey.jpg" alt="user-img"
                                 width="36" class="img-circle"><b class="hidden-xs">Hey Welcome!</b></a>
@@ -89,18 +96,18 @@
                     <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
                             class="hide-menu">Navigation</span></h3>
                 </div>
-                
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
                         <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Home</a>
+                                aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
                         <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
                                 aria-hidden="true"></i>Profile</a>
                     </li>
                     <li>
-                        <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Events</a>
+                        <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw"
+                                aria-hidden="true"></i>Basic Table</a>
                     </li>
                     
                    
@@ -108,7 +115,7 @@
                         <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Campus Ambassador</a>
                     </li>
-                     <li>
+                    <li>
                         <a href="payment.php" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Payments</a>
                     </li>
                 </ul>
@@ -128,95 +135,72 @@
                         <h4 class="page-title">Payments</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        
+                       
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Payments</li>
+                            <li class="active">Payment Summary</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-                <div class="row">
+                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Price</h3>
-                           
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th><b>Type</b></th>
-                                            <th><b>Price<b></th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <b>Entry ticket for two days</b></td>
-                                            <td><b>₹250</b></td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td> <b>Entry ticket for two days + Accomodation </b> </td>
-                                            <td><b>₹500</b></td>
-                                           
-                                        </tr>
-                                         <tr>
-                                            <td>3</td>
-                                            <td> <b>Entry ticket for two days + T-Shirt </b></td>
-                                            <td><b>₹550</b></td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><b>Entry ticket for two days + Accomodation + T-Shirt  </b></td>
-                                            <td><b>₹800</b></td>
-                                           
-                                        </tr>
-                                       <tr>
-                                            <td>5</td>
-                                            <td> <b>Expo for Starups </b> </td>
-                                            <td><b>₹1500</b></td>
-                                           
-                                        </tr>
-                                       
-                                        
-                                        <tr>
-                                            <td>6</td>
-                                            <td><b>Expo for Startups + T-Shirt   </b>   </td>
-                                            <td><b>₹1800</b></td>
-                                           
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-             
+                            <h3 class="box-title">Payable Amount</h3>   
+                               <div class="table-responsive">
 
-                <form method="post" action="TxnTest.php">
-                   
-                    <div class="form-group" >
-                        <label for="exampleFormControlSelect1">Select Amount</label>
-                        <select name="amount" class="form-control" id="exampleFormControlSelect1">
-                        <option value= "250">250</option>
-                        <option  value= "550">500</option>
-                        <option value= "1500">550</option>
-                        <option value= "1500">800</option>
-                        <option value= "1500">1500</option>
-                        <option value= "1500">1800</option>
-                        </select>
-                        <br>
-                        <input type="submit" style="background-color: black;color: white;
-  padding: 15px 32px;" value="Pay Now">
-                    </div>
-                    
-                </form>
+                    <form method="post" action="pgRedirect.php">
+        <table class="table">
+            <thread>
+                <tr>
+                    <th>S.No</th>
+                    <th>Label</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><label>ORDER_ID::*</label></td>
+                    <td><input id="ORDER_ID" tabindex="1" maxlength="20" size="20"
+                        name="ORDER_ID" autocomplete="off"
+                        value="<?php echo  "Ecell" . rand(10000,99999999)?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><label>CUSTID ::*</label></td>
+                    <td><input id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="CUST001"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><label>INDUSTRY_TYPE_ID ::*</label></td>
+                    <td><input id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><label>Channel ::*</label></td>
+                    <td><input id="CHANNEL_ID" tabindex="4" maxlength="12"
+                        size="12" name="CHANNEL_ID" autocomplete="off" value="WEB">
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><label>Total Amount</label></td>
+                    <td><input title="TXN_AMOUNT" tabindex="10"
+                        type="number" name="TXN_AMOUNT"
+                        value="<?php echo $amount; ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input style="background-color: black;color: white;
+  padding: 15px 32px" value="CheckOut" type="submit"   onclick=""></td>
+                </tr>
+            </thread>
+        </table>
+        * - Mandatory Fields. Do not change the values.
+    </form>
+              </div></div></div>
                 </div>
             </div>
             <!-- /.container-fluid -->

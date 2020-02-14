@@ -1,11 +1,11 @@
 $(document).ready(function () {
     $(".tst1").on("click", function () {
         $.toast({
-            heading: 'Welcome to my Elite admin',
-            text: 'Use the predefined ones, or specify a custom position object.',
+            heading: 'Welcome to E-Cell, IIT Patna',
+            text: '',
             position: 'top-right',
             loaderBg: '#ff6849',
-            icon: 'info',
+            icon: '',
             hideAfter: 3000,
             stack: 6
         });
@@ -14,11 +14,11 @@ $(document).ready(function () {
 
     $(".tst2").on("click", function () {
         $.toast({
-            heading: 'Welcome to my Elite admin',
-            text: 'Use the predefined ones, or specify a custom position object.',
+            heading: 'Welcome to E-Cell, IIT Patna',
+            text: '',
             position: 'top-right',
             loaderBg: '#ff6849',
-            icon: 'warning',
+            icon: '',
             hideAfter: 3500,
             stack: 6
         });
@@ -26,11 +26,11 @@ $(document).ready(function () {
     });
     $(".tst3").on("click", function () {
         $.toast({
-            heading: 'Welcome to my Elite admin',
-            text: 'Use the predefined ones, or specify a custom position object.',
+            heading: 'Welcome to E-Cell, IIT Patna',
+            text: '',
             position: 'top-right',
             loaderBg: '#ff6849',
-            icon: 'success',
+            icon: '',
             hideAfter: 3500,
             stack: 6
         });
@@ -39,11 +39,11 @@ $(document).ready(function () {
 
     $(".tst4").on("click", function () {
         $.toast({
-            heading: 'Welcome to my Elite admin',
-            text: 'Use the predefined ones, or specify a custom position object.',
+            heading: 'Welcome to E-Cell, IIT Patna',
+            text: '',
             position: 'top-right',
             loaderBg: '#ff6849',
-            icon: 'error',
+            icon: '',
             hideAfter: 3500
 
         });

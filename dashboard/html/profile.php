@@ -73,19 +73,20 @@ $referrals = $data['referrals'];
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
+                 <div style="background-color:  #2f323e;">
+                    <!-- Logo -->
                     <a class="logo" href="dashboard.html">
-                        <!-- Logo icon image, you can use font-icon also --><b>
-                            <!--This is dark logo icon--><img src="../plugins/images/admin-logo.png" alt="home"
-                                class="dark-logo" />
-                            <!--This is light logo icon--><img src="../plugins/images/admin-logo-dark.png" alt="home"
-                                class="light-logo" />
+                        <!-- Logo icon image, you can use font-icon also -->
+                        <b style="color: #fff">
+                        <h3 class="dark-logo"> <b style="color: #fff">Ecell</b></h3>
+                            <h3 class="light-logo"><b style="color: #fff">E-Cell</b> </h3>
+                            <h3 class="dark-logo"> <b style="color: #fff">IIT Patna</b></h3>
+                            <h3 class="light-logo"><b style="color: #fff">IIT Patna</b> </h3>
+                            
                         </b>
-                        <!-- Logo text image you can use text also --><span class="hidden-xs">
-                            <!--This is dark logo text--><img src="../plugins/images/admin-text.png" alt="home"
-                                class="dark-logo" />
-                            <!--This is light logo text--><img src="../plugins/images/admin-text-dark.png" alt="home"
-                                class="light-logo" />
-                        </span> </a>
+
+                     </a>
+                 </div>
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
@@ -93,9 +94,9 @@ $referrals = $data['referrals'];
                         <a class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg"
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
-                    <li>
-                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img"
-                                width="36" class="img-circle"><b class="hidden-xs"><?php echo $name;?></b></a>
+                   <li>
+                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/hey.jpg" alt="user-img"
+                                width="36" class="img-circle"><b class="hidden-xs">Hey Welcome!</b></a>
                     </li>
                 </ul>
             </div>
@@ -116,7 +117,7 @@ $referrals = $data['referrals'];
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
                         <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Dashboard</a>
+                                aria-hidden="true"></i>Home</a>
                     </li>
                     <li>
                         <a href="profile.php" class="waves-effect"><i class="fa fa-user fa-fw"
@@ -130,6 +131,9 @@ $referrals = $data['referrals'];
                     <li>
                         <a href="ca.php" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Campus Ambassador</a>
+                    </li>
+                     <li>
+                        <a href="payment.php" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Payments</a>
                     </li>
                    
                 </ul>

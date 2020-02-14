@@ -19,9 +19,8 @@ if (PAYTM_ENVIRONMENT == 'PROD') {
 	$PAYTM_TXN_URL='https://securegw.paytm.in/theia/processTransaction';
 }
 
-define('PAYTM_REFUND_URL', ''); 
+define('PAYTM_REFUND_URL', '');
 define('PAYTM_STATUS_QUERY_URL', $PAYTM_STATUS_QUERY_NEW_URL);
 define('PAYTM_STATUS_QUERY_NEW_URL', $PAYTM_STATUS_QUERY_NEW_URL);
 define('PAYTM_TXN_URL', $PAYTM_TXN_URL);
 ?>
- 
