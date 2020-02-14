@@ -22,7 +22,7 @@ $ca =$data['ca'];
 
 if($ca ==0)
 {
-    header("Location: /ecell/dashboard/html/blank.php");
+    header("Location: /ecell/dashboard/html/notCA.php");
     exit();
 }
 

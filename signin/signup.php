@@ -65,7 +65,7 @@
 					session_start();
 					$_SESSION['login_user']=$email;
 					
-					header("Location: /ecell/dashboard/html/profile.php");
+					header("Location: /ecell/dashboard/html/dashboard.html");
 				}
 
 				else{
