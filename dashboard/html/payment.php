@@ -96,7 +96,7 @@
                                 aria-hidden="true"></i>Home</a>
                     </li>
                     <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
+                        <a href="profile.php" class="waves-effect"><i class="fa fa-user fa-fw"
                                 aria-hidden="true"></i>Profile</a>
                     </li>
                     <li>
@@ -105,7 +105,7 @@
                     
                    
                     <li>
-                        <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="notCA.php" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Campus Ambassador</a>
                     </li>
                      <li>
@@ -205,11 +205,11 @@
                         <label for="exampleFormControlSelect1">Select Amount</label>
                         <select name="amount" class="form-control" id="exampleFormControlSelect1">
                         <option value= "250">250</option>
-                        <option  value= "550">500</option>
-                        <option value= "1500">550</option>
-                        <option value= "1500">800</option>
+                        <option  value= "500">500</option>
+                        <option value= "550">550</option>
+                        <option value= "800">800</option>
                         <option value= "1500">1500</option>
-                        <option value= "1500">1800</option>
+                        <option value= "1800">1800</option>
                         </select>
                         <br>
                         <input type="submit" style="background-color: black;color: white;

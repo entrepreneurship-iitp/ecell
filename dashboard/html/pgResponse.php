@@ -2,10 +2,19 @@
 header("Pragma: no-cache");
 header("Cache-Control: no-cache");
 header("Expires: 0");
+header('Refresh: 10; URL=/ecell/dashboard/html/dashboard.html');
+
 
 // following files need to be included
 require_once("./lib/config_paytm.php");
 require_once("./lib/encdec_paytm.php");
+
+session_start();
+if(!isset($_SESSION['login_user'])){
+	header("location: /ecell/signin/signup.php");
+}
+
+require("../../config.php");
 
 $paytmChecksum = "";
 $paramList = array();
@@ -22,19 +31,39 @@ if($isValidChecksum == "TRUE") {
 	echo "<b>Checksum matched and following are the transaction details:</b>" . "<br/>";
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
 		echo "<h3><b>Transaction status is success</b>" . "<br/></h3>";
+		$sql = "UPDATE users SET payment = $_POST[TXNAMOUNT] WHERE webmail = '".$_SESSION['login_user']."'";
+
+		if ($mysqli->query($sql) === TRUE) {
+			echo '<b> Payment status updated</b>';
+		} else {
+		  echo '<script>alert("Error! Contact support")</script>';
+		}
+		
 		//Process your transaction here as success transaction.
 		//Verify amount & order id received from Payment gateway with your application's order id and amount.
 	}
 	else {
 		echo "<b>Transaction status is failure</b>" . "<br/>";
+
 	}
 
-	if (isset($_POST) && count($_POST)>0 )
-	{ 
-		foreach($_POST as $paramName => $paramValue) {
-				echo "<br/>" . $paramName . " = " . $paramValue;
-		}
-	}
+	echo "<p> you will be redirected in <span id='countdowntimer'>10 </span> Seconds</p>"."<script type='text/javascript'>"
+		."var timeleft = 10;"
+		."var downloadTimer = setInterval(function(){
+		timeleft--;"
+		."document.getElementById('countdowntimer').textContent = timeleft;"
+		."if(timeleft <= 0)
+			clearInterval(downloadTimer);
+		},1000);
+	</script>";
+
+	//echo "";
+	// if (isset($_POST) && count($_POST)>0 )
+	// { 
+	// 	foreach($_POST as $paramName => $paramValue) {
+	// 			echo "<br/>" . $paramName . " = " . $paramValue;
+	// 	}
+	// }
 	
 	
 

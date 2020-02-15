@@ -99,23 +99,22 @@
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
                         <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Dashboard</a>
+                                aria-hidden="true"></i>Home</a>
                     </li>
                     <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
+                        <a href="profile.php" class="waves-effect"><i class="fa fa-user fa-fw"
                                 aria-hidden="true"></i>Profile</a>
                     </li>
                     <li>
-                        <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i>Basic Table</a>
+                        <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Events</a>
                     </li>
                     
                    
                     <li>
-                        <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="notCA.php" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Campus Ambassador</a>
                     </li>
-                    <li>
+                     <li>
                         <a href="payment.php" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Payments</a>
                     </li>
                 </ul>
@@ -138,7 +137,7 @@
                        
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Payment Summary</li>
+                            <li class="active">Payments</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -160,7 +159,7 @@
                 <tr>
                     <td>1</td>
                     <td><label>ORDER_ID::*</label></td>
-                    <td><input id="ORDER_ID" tabindex="1" maxlength="20" size="20"
+                    <td><input readonly id="ORDER_ID" tabindex="1" maxlength="20" size="20"
                         name="ORDER_ID" autocomplete="off"
                         value="<?php echo  "Ecell" . rand(10000,99999999)?>">
                     </td>
@@ -168,37 +167,37 @@
                 <tr>
                     <td>2</td>
                     <td><label>CUSTID ::*</label></td>
-                    <td><input id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="CUST001"></td>
+                    <td><input readonly id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="CUST001"></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td><label>INDUSTRY_TYPE_ID ::*</label></td>
-                    <td><input id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail"></td>
+                    <td><input readonly id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail"></td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td><label>Channel ::*</label></td>
-                    <td><input id="CHANNEL_ID" tabindex="4" maxlength="12"
+                    <td><input readonly id="CHANNEL_ID" tabindex="4" maxlength="12"
                         size="12" name="CHANNEL_ID" autocomplete="off" value="WEB">
                     </td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td><label>Total Amount</label></td>
-                    <td><input title="TXN_AMOUNT" tabindex="10"
+                    <td><input readonly title="TXN_AMOUNT" tabindex="10"
                         type="number" name="TXN_AMOUNT"
                         value="<?php echo $amount; ?>">
+                         
                     </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><input style="background-color: black;color: white;
+                    <td><input  style="background-color: black;color: white;
   padding: 15px 32px" value="CheckOut" type="submit"   onclick=""></td>
                 </tr>
             </thread>
         </table>
-        * - Mandatory Fields. Do not change the values.
     </form>
               </div></div></div>
                 </div>

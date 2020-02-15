@@ -147,6 +147,9 @@ $count =1;
                     <li>
                         <a href="ca.php" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Campus Ambassador</a>
                     </li>
+                    <li>
+                        <a href="payment.php" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Payments</a>
+                    </li>
     
 
                 </ul>
