@@ -64,7 +64,8 @@
 				if($row['password']==$password){
 					session_start();
 					$_SESSION['login_user']=$email;
-					header("Location: /ecell/profile.php");
+					
+					header("Location: /ecell/dashboard/html/dashboard.html");
 				}
 
 				else{

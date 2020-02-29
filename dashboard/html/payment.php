@@ -1,28 +1,3 @@
-<?php
-session_start();
-if(!isset($_SESSION['login_user'])){
-    header("location: /ecell/signin/signup.php");
-}
-if(isset($_POST['subData'])){
-    require("../../logout.php");
-}
-require("../../config.php");
-$webmail=$_SESSION['login_user'];
-// $name=$_SESSION['login_user'];
-$sql="SELECT * FROM users WHERE webmail='".$webmail."'";
-$res=$mysqli->query($sql);
-$data=$res->fetch_assoc();
-
-$name=$data['name'];
-$points=$data['points'];
-$college=$data['college'];
-$refcode =$data['refcode'];
-
-$sql="select count(name) as referrals from users where ref_by ='".$refcode."'";
-$res=$mysqli->query($sql);
-$data=$res->fetch_assoc();
-$referrals = $data['referrals'];
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +9,7 @@ $referrals = $data['referrals'];
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>Profile | Campus Ambassador</title>
+    <title>Blank Page | Campus Ambassador Program</title>
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Menu CSS -->
@@ -72,8 +47,7 @@ $referrals = $data['referrals'];
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
                 <div class="top-left-part">
-                    <!-- Logo -->
-                 <div style="background-color:  #2f323e;">
+                    <div style="background-color:  #2f323e;">
                     <!-- Logo -->
                     <a class="logo" href="dashboard.html">
                         <!-- Logo icon image, you can use font-icon also -->
@@ -94,7 +68,8 @@ $referrals = $data['referrals'];
                         <a class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg"
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
-                   <li>
+                    
+                    <li>
                         <a class="profile-pic" href="#"> <img src="../plugins/images/users/hey.jpg" alt="user-img"
                                 width="36" class="img-circle"><b class="hidden-xs">Hey Welcome!</b></a>
                     </li>
@@ -114,30 +89,30 @@ $referrals = $data['referrals'];
                     <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
                             class="hide-menu">Navigation</span></h3>
                 </div>
+                
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
                         <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
                                 aria-hidden="true"></i>Home</a>
                     </li>
                     <li>
-                        <a href="profile.php" class="waves-effect"><i class="fa fa-user fa-fw"
+                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
                                 aria-hidden="true"></i>Profile</a>
                     </li>
                     <li>
-                        <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i>events</a>
+                        <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Events</a>
                     </li>
                     
+                   
                     <li>
-                        <a href="ca.php" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Campus Ambassador</a>
                     </li>
                      <li>
                         <a href="payment.php" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Payments</a>
                     </li>
-                   
                 </ul>
-            
+               
             </div>
         </div>
         <!-- ============================================================== -->
@@ -150,52 +125,106 @@ $referrals = $data['referrals'];
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Profile page</h4>
+                        <h4 class="page-title">Payments</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Logout</a>
+                        
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Profile Page</li>
+                            <li class="active">Payments</li>
                         </ol>
                     </div>
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
-                <!-- .row -->
                 <div class="row">
-                   
+                    <div class="col-sm-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="../plugins/images/large/img1.jpg">
-                                <div class="overlay-box">
-                                    <div class="user-content">
-                                        <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg"
-                                                class="thumb-lg img-circle" alt="img"></a>
-                                        <h4 class="text-white"><?php echo $name;?></h4>
-                                        <h5 class="text-white"><?php echo $webmail;?></h5>
-                                    </div>
-                                </div>
+                            <h3 class="box-title">Price</h3>
+                           
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th><b>Type</b></th>
+                                            <th><b>Price<b></th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td> <b>Entry ticket for two days</b></td>
+                                            <td><b>₹250</b></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td> <b>Entry ticket for two days + Accomodation </b> </td>
+                                            <td><b>₹500</b></td>
+                                           
+                                        </tr>
+                                         <tr>
+                                            <td>3</td>
+                                            <td> <b>Entry ticket for two days + T-Shirt </b></td>
+                                            <td><b>₹550</b></td>
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><b>Entry ticket for two days + Accomodation + T-Shirt  </b></td>
+                                            <td><b>₹800</b></td>
+                                           
+                                        </tr>
+                                       <tr>
+                                            <td>5</td>
+                                            <td> <b>Expo for Starups </b> </td>
+                                            <td><b>₹1500</b></td>
+                                           
+                                        </tr>
+                                       
+                                        
+                                        <tr>
+                                            <td>6</td>
+                                            <td><b>Expo for Startups + T-Shirt   </b>   </td>
+                                            <td><b>₹1800</b></td>
+                                           
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="user-btm-box">
-                                <div class="col-md-6 col-sm-6 text-center">
-                                    <p class="text-blue"><i class="ti-twitter"></i></p>
-                                    <h1>Points: <?php echo $points; ?></h1>
-                                </div>
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-danger"><i class="ti-dribbble"></i></p>
-                                    <h1>Referrals: <?php echo $referrals; ?></h1>
-                                </div>
-                            </div>
-                       
+                        </div>
                     </div>
+                </div>
+                <div class="row">
+             
+
+                <form method="post" action="TxnTest.php">
                    
-    
-                <!-- /.row -->
+                    <div class="form-group" >
+                        <label for="exampleFormControlSelect1">Select Amount</label>
+                        <select name="amount" class="form-control" id="exampleFormControlSelect1">
+                        <option value= "250">250</option>
+                        <option  value= "550">500</option>
+                        <option value= "1500">550</option>
+                        <option value= "1500">800</option>
+                        <option value= "1500">1500</option>
+                        <option value= "1500">1800</option>
+                        </select>
+                        <br>
+                        <input type="submit" style="background-color: black;color: white;
+  padding: 15px 32px;" value="Pay Now">
+                    </div>
+                    
+                </form>
+                </div>
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> </footer>
+            <footer class="footer text-center">  </footer>
         </div>
-        <!-- /#page-wrapper -->
+        <!-- ============================================================== -->
+        <!-- End Page Content -->
+        <!-- ============================================================== -->
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->

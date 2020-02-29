@@ -1,30 +1,12 @@
 <?php
-session_start();
-if(!isset($_SESSION['login_user'])){
-    header("location: /ecell/signin/signup.php");
-}
-if(isset($_POST['subData'])){
-    require("../../logout.php");
-}
-require("../../config.php");
-$webmail=$_SESSION['login_user'];
-// $name=$_SESSION['login_user'];
-$sql="SELECT * FROM users WHERE webmail='".$webmail."'";
-$res=$mysqli->query($sql);
-$data=$res->fetch_assoc();
+    header("Pragma: no-cache");
+    header("Cache-Control: no-cache");
+    header("Expires: 0");
+    $amount=$_POST['amount'];
 
-$name=$data['name'];
-$points=$data['points'];
-$college=$data['college'];
-$refcode =$data['refcode'];
-
-$sql="select count(name) as referrals from users where ref_by ='".$refcode."'";
-$res=$mysqli->query($sql);
-$data=$res->fetch_assoc();
-$referrals = $data['referrals'];
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
 <head>
@@ -34,7 +16,8 @@ $referrals = $data['referrals'];
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>Profile | Campus Ambassador</title>
+    <title>Payments | Campus Ambassador Program</title>
+    <meta name="GENERATOR" content="Evrsoft First Page">
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Menu CSS -->
@@ -72,8 +55,7 @@ $referrals = $data['referrals'];
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
                 <div class="top-left-part">
-                    <!-- Logo -->
-                 <div style="background-color:  #2f323e;">
+                   <div style="background-color:  #2f323e;">
                     <!-- Logo -->
                     <a class="logo" href="dashboard.html">
                         <!-- Logo icon image, you can use font-icon also -->
@@ -94,7 +76,7 @@ $referrals = $data['referrals'];
                         <a class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg"
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
-                   <li>
+                    <li>
                         <a class="profile-pic" href="#"> <img src="../plugins/images/users/hey.jpg" alt="user-img"
                                 width="36" class="img-circle"><b class="hidden-xs">Hey Welcome!</b></a>
                     </li>
@@ -117,27 +99,27 @@ $referrals = $data['referrals'];
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
                         <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Home</a>
+                                aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="profile.php" class="waves-effect"><i class="fa fa-user fa-fw"
+                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
                                 aria-hidden="true"></i>Profile</a>
                     </li>
                     <li>
-                        <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i>events</a>
+                        <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw"
+                                aria-hidden="true"></i>Basic Table</a>
                     </li>
                     
+                   
                     <li>
-                        <a href="ca.php" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Campus Ambassador</a>
                     </li>
-                     <li>
+                    <li>
                         <a href="payment.php" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Payments</a>
                     </li>
-                   
                 </ul>
-            
+               
             </div>
         </div>
         <!-- ============================================================== -->
@@ -150,52 +132,83 @@ $referrals = $data['referrals'];
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Profile page</h4>
+                        <h4 class="page-title">Payments</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Logout</a>
+                       
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Profile Page</li>
+                            <li class="active">Payment Summary</li>
                         </ol>
                     </div>
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
-                <!-- .row -->
-                <div class="row">
-                   
+                 <div class="row">
+                    <div class="col-sm-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="../plugins/images/large/img1.jpg">
-                                <div class="overlay-box">
-                                    <div class="user-content">
-                                        <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg"
-                                                class="thumb-lg img-circle" alt="img"></a>
-                                        <h4 class="text-white"><?php echo $name;?></h4>
-                                        <h5 class="text-white"><?php echo $webmail;?></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-btm-box">
-                                <div class="col-md-6 col-sm-6 text-center">
-                                    <p class="text-blue"><i class="ti-twitter"></i></p>
-                                    <h1>Points: <?php echo $points; ?></h1>
-                                </div>
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-danger"><i class="ti-dribbble"></i></p>
-                                    <h1>Referrals: <?php echo $referrals; ?></h1>
-                                </div>
-                            </div>
-                       
-                    </div>
-                   
-    
-                <!-- /.row -->
+                            <h3 class="box-title">Payable Amount</h3>   
+                               <div class="table-responsive">
+
+                    <form method="post" action="pgRedirect.php">
+        <table class="table">
+            <thread>
+                <tr>
+                    <th>S.No</th>
+                    <th>Label</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td><label>ORDER_ID::*</label></td>
+                    <td><input id="ORDER_ID" tabindex="1" maxlength="20" size="20"
+                        name="ORDER_ID" autocomplete="off"
+                        value="<?php echo  "Ecell" . rand(10000,99999999)?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><label>CUSTID ::*</label></td>
+                    <td><input id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="CUST001"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><label>INDUSTRY_TYPE_ID ::*</label></td>
+                    <td><input id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><label>Channel ::*</label></td>
+                    <td><input id="CHANNEL_ID" tabindex="4" maxlength="12"
+                        size="12" name="CHANNEL_ID" autocomplete="off" value="WEB">
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><label>Total Amount</label></td>
+                    <td><input title="TXN_AMOUNT" tabindex="10"
+                        type="number" name="TXN_AMOUNT"
+                        value="<?php echo $amount; ?>">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input style="background-color: black;color: white;
+  padding: 15px 32px" value="CheckOut" type="submit"   onclick=""></td>
+                </tr>
+            </thread>
+        </table>
+        * - Mandatory Fields. Do not change the values.
+    </form>
+              </div></div></div>
+                </div>
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> </footer>
+            <footer class="footer text-center">  </footer>
         </div>
-        <!-- /#page-wrapper -->
+        <!-- ============================================================== -->
+        <!-- End Page Content -->
+        <!-- ============================================================== -->
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->

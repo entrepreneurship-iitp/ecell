@@ -1,29 +1,24 @@
 <?php
-session_start();
-if(!isset($_SESSION['login_user'])){
-    header("location: /ecell/signin/signup.php");
-}
-if(isset($_POST['subData'])){
-    require("../../logout.php");
-}
-require("../../config.php");
-$webmail=$_SESSION['login_user'];
-// $name=$_SESSION['login_user'];
-$sql="SELECT * FROM users WHERE webmail='".$webmail."'";
-$res=$mysqli->query($sql);
-$data=$res->fetch_assoc();
 
-$name=$data['name'];
-$points=$data['points'];
-$college=$data['college'];
-$refcode =$data['refcode'];
+        session_start();
+        if(!isset($_SESSION['login_user'])){
+            header("location: /ecell/signin/signup.php");
+        }
+        
+        require("../../config.php");
+        if(isset($_POST['button1'])) { 
+            
+            $sql = "UPDATE users SET ca = 1 WHERE webmail = '".$_SESSION['login_user']."'";
 
-$sql="select count(name) as referrals from users where ref_by ='".$refcode."'";
-$res=$mysqli->query($sql);
-$data=$res->fetch_assoc();
-$referrals = $data['referrals'];
+            if ($mysqli->query($sql) === TRUE) {
+                header("Location: /ecell/dashboard/html/ca.php");
+                exit();
+            } else {
+              echo '<script>alert("Error! Try again.")</script>';
+            }
+
+        } 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +29,7 @@ $referrals = $data['referrals'];
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>Profile | Campus Ambassador</title>
+    <title>Blank Page | Campus Ambassador Program</title>
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Menu CSS -->
@@ -73,20 +68,19 @@ $referrals = $data['referrals'];
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
-                 <div style="background-color:  #2f323e;">
-                    <!-- Logo -->
                     <a class="logo" href="dashboard.html">
-                        <!-- Logo icon image, you can use font-icon also -->
-                        <b style="color: #fff">
-                        <h3 class="dark-logo"> <b style="color: #fff">Ecell</b></h3>
-                            <h3 class="light-logo"><b style="color: #fff">E-Cell</b> </h3>
-                            <h3 class="dark-logo"> <b style="color: #fff">IIT Patna</b></h3>
-                            <h3 class="light-logo"><b style="color: #fff">IIT Patna</b> </h3>
-                            
+                        <!-- Logo icon image, you can use font-icon also --><b>
+                            <!--This is dark logo icon--><img src="../plugins/images/admin-logo.png" alt="home"
+                                class="dark-logo" />
+                            <!--This is light logo icon--><img src="../plugins/images/admin-logo-dark.png" alt="home"
+                                class="light-logo" />
                         </b>
-
-                     </a>
-                 </div>
+                        <!-- Logo text image you can use text also --><span class="hidden-xs">
+                            <!--This is dark logo text--><img src="../plugins/images/admin-text.png" alt="home"
+                                class="dark-logo" />
+                            <!--This is light logo text--><img src="../plugins/images/admin-text-dark.png" alt="home"
+                                class="light-logo" />
+                        </span> </a>
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
@@ -94,9 +88,14 @@ $referrals = $data['referrals'];
                         <a class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg"
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
-                   <li>
-                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/hey.jpg" alt="user-img"
-                                width="36" class="img-circle"><b class="hidden-xs">Hey Welcome!</b></a>
+                    <li>
+                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
+                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i
+                                    class="fa fa-search"></i></a> </form>
+                    </li>
+                    <li>
+                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img"
+                                width="36" class="img-circle"><b class="hidden-xs">Steave</b></a>
                     </li>
                 </ul>
             </div>
@@ -117,27 +116,24 @@ $referrals = $data['referrals'];
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
                         <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Home</a>
+                                aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="profile.php" class="waves-effect"><i class="fa fa-user fa-fw"
+                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
                                 aria-hidden="true"></i>Profile</a>
                     </li>
                     <li>
-                        <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw"
-                                aria-hidden="true"></i>events</a>
+                        <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw"
+                                aria-hidden="true"></i>Basic Table</a>
                     </li>
                     
+                   
                     <li>
-                        <a href="ca.php" class="waves-effect"><i class="fa fa-columns fa-fw"
+                        <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw"
                                 aria-hidden="true"></i>Campus Ambassador</a>
                     </li>
-                     <li>
-                        <a href="payment.php" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Payments</a>
-                    </li>
-                   
                 </ul>
-            
+               
             </div>
         </div>
         <!-- ============================================================== -->
@@ -150,52 +146,32 @@ $referrals = $data['referrals'];
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Profile page</h4>
+                        <h4 class="page-title">Blank Page</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Logout</a>
+                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade
+                            to Pro</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Profile Page</li>
+                            <li class="active">Blank Page</li>
                         </ol>
                     </div>
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
-                <!-- .row -->
                 <div class="row">
-                   
-                        <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="../plugins/images/large/img1.jpg">
-                                <div class="overlay-box">
-                                    <div class="user-content">
-                                        <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg"
-                                                class="thumb-lg img-circle" alt="img"></a>
-                                        <h4 class="text-white"><?php echo $name;?></h4>
-                                        <h5 class="text-white"><?php echo $webmail;?></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-btm-box">
-                                <div class="col-md-6 col-sm-6 text-center">
-                                    <p class="text-blue"><i class="ti-twitter"></i></p>
-                                    <h1>Points: <?php echo $points; ?></h1>
-                                </div>
-                                <div class="col-md-4 col-sm-4 text-center">
-                                    <p class="text-danger"><i class="ti-dribbble"></i></p>
-                                    <h1>Referrals: <?php echo $referrals; ?></h1>
-                                </div>
-                            </div>
-                       
-                    </div>
-                   
-    
-                <!-- /.row -->
+                    <form method="post"> 
+                        <input type="submit" name="button1"
+                                class="button" value="Register as CA" /> 
+                    </form> 
+                </div>
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> </footer>
+            <footer class="footer text-center">  </footer>
         </div>
-        <!-- /#page-wrapper -->
+        <!-- ============================================================== -->
+        <!-- End Page Content -->
+        <!-- ============================================================== -->
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
