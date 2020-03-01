@@ -40,7 +40,7 @@
 					}
 					else{
 						$subject = "Verification mail from E-Cell IIT Patna";
-						$message="Thank you for registring with us. Please click here to activate your account http://localhost/ecell/verfication.php?code=".$randomString."&email=".$email.".";
+						$message="Thank you for registring with us. Please click here to activate your account http://www.ecell-iitp.org/verfication.php?code=".$randomString."&email=".$email.".";
 						require('../mail.php');
 					}
 				}

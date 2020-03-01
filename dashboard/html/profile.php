@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['login_user'])){
-    header("location: /ecell/signin/signup.php");
+    header("location: ../../signin/signup.php");
 }
 if(isset($_POST['subData'])){
     require("../../logout.php");
@@ -115,6 +115,7 @@ $referrals = $data['referrals'];
                             class="hide-menu">Navigation</span></h3>
                 </div>
                 <ul class="nav" id="side-menu">
+
                     <li style="padding: 70px 0 0;">
                         <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
                                 aria-hidden="true"></i>Home</a>
@@ -153,7 +154,7 @@ $referrals = $data['referrals'];
                         <h4 class="page-title">Profile page</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
+                        <a href="../../logout.php"
                             class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Logout</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
