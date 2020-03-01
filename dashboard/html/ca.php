@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['login_user'])){
-    header("location: /ecell/signin/signup.php");
+    header("location: /ecell/signin/signin.php");
 }
 if(isset($_POST['subData'])){
     require("../../logout.php");
@@ -92,7 +92,7 @@ $count =1;
                 <div class="top-left-part">
                     <!-- Logo -->
                    
-                    <a class="logo" href="dashboard.html">
+                    <a class="logo" href="dashboard.php">
                         <!-- Logo icon image, you can use font-icon also -->
                         <b>
                             <!--This is dark logo icon-->
@@ -135,13 +135,13 @@ $count =1;
                 </div>
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Home</a>
+                        <a href="dashboard.php" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Home</a>
                     </li>
                     <li>
                         <a href="profile.php" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                     </li>
                     <li>
-                        <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Events</a>
+                        <a href="events.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Events</a>
                     </li>
     
                     <li>

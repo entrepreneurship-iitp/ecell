@@ -2,7 +2,7 @@
 header("Pragma: no-cache");
 header("Cache-Control: no-cache");
 header("Expires: 0");
-header('Refresh: 10; URL=/ecell/dashboard/html/dashboard.html');
+header('Refresh: 10; URL=/ecell/dashboard/html/dashboard.php');
 
 
 // following files need to be included
@@ -11,7 +11,7 @@ require_once("./lib/encdec_paytm.php");
 
 session_start();
 if(!isset($_SESSION['login_user'])){
-	header("location: /ecell/signin/signup.php");
+	header("location: /ecell/signin/signin.php");
 }
 
 require("../../config.php");

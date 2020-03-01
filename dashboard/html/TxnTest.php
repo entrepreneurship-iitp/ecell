@@ -57,7 +57,7 @@
                 <div class="top-left-part">
                    <div style="background-color:  #2f323e;">
                     <!-- Logo -->
-                    <a class="logo" href="dashboard.html">
+                    <a class="logo" href="dashboard.php">
                         <!-- Logo icon image, you can use font-icon also -->
                         <b style="color: #fff">
                         <h3 class="dark-logo"> <b style="color: #fff">Ecell</b></h3>
@@ -98,7 +98,7 @@
                 </div>
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
+                        <a href="dashboard.php" class="waves-effect"><i class="fa fa-clock-o fa-fw"
                                 aria-hidden="true"></i>Home</a>
                     </li>
                     <li>
@@ -106,7 +106,7 @@
                                 aria-hidden="true"></i>Profile</a>
                     </li>
                     <li>
-                        <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Events</a>
+                        <a href="events.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Events</a>
                     </li>
                     
                    

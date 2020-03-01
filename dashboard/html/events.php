@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(!isset($_SESSION['login_user'])){
+    header("location: ../../signin/signin.php");
+}
+if(isset($_POST['subData'])){
+    require("../../logout.php");
+}
+require("../../config.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,9 +65,9 @@
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
                 <div class="top-left-part">
-                 <div style="background-color:  #2f323e;">
+                   <div style="background-color:  #2f323e;">
                     <!-- Logo -->
-                    <a class="logo" href="dashboard.html">
+                    <a class="logo" href="dashboard.php">
                         <!-- Logo icon image, you can use font-icon also -->
                         <b style="color: #fff">
                         <h3 class="dark-logo"> <b style="color: #fff">Ecell</b></h3>
@@ -94,14 +106,14 @@
                 </div>
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Home</a>
+                        <a href="dashboard.php" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Home</a>
                     </li>
                     <li>
                         <a href="profile.php" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                     </li>
 
                      <li>
-                        <a href="events.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Events</a>
+                        <a href="events.php" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Events</a>
                     </li>
 
                      <li>
@@ -110,7 +122,6 @@
                      <li>
                         <a href="payment.php" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Payments</a>
                     </li>
-
     
 
                 </ul>
@@ -128,12 +139,12 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Home</h4> </div>
+                        <h4 class="page-title">Events</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <a href="../../logout.php"
                             class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Logout</a>
                         <ol class="breadcrumb">
-                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Events</a></li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -141,101 +152,32 @@
                
                 <div class="row">
                     <!-- .col -->
-                    <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Recent Updates</h3>
+                            <h3 class="box-title">Events</h3>
                             <div class="comment-center p-t-10">
                                 <div class="comment-body">
-                                    <div class="user-img"> <img src="../plugins/images/users/pawandeep.jpg" alt="user" class="img-circle">
-                                    </div>
                                     <div class="mail-contnet">
-                                        <h5>Pavan kumar</h5><span class="time">10:20 AM   20  may 2016</span>
-                                        <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span> <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Approve</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Reject</a>
+                                        <h4><b>Ideathon</b></h4><span class="time">10:20 AM   20  may 2016</span>
+                                        <br/><span class="mail-desc">The first step for innovation is ideation. This is a platform to showcase your skills. Come up with a business idea to solve problem statements!</span> <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Register here</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Rule Book</a>
                                     </div>
                                 </div>
                                 <div class="comment-body">
-                                    <div class="user-img"> <img src="../plugins/images/users/sonu.jpg" alt="user" class="img-circle">
-                                    </div>
                                     <div class="mail-contnet">
-                                        <h5>Sonu Nigam</h5><span class="time">10:20 AM   20  may 2016</span>
-                                        <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span>
+                                        <h4><b>Startup Expo</b></h4><span class="time">10:20 AM   20  may 2016</span>
+                                        <br/><span class="mail-desc">Showcase your start-up to the world and discover the next destination in your success story. Demonstrate your solutions live, be innovative, put your best foot forward!</span>
+                                        <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Register here</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Rule Book</a>
                                     </div>
                                 </div>
                                 <div class="comment-body b-none">
-                                    <div class="user-img"> <img src="../plugins/images/users/arijit.jpg" alt="user" class="img-circle">
-                                    </div>
                                     <div class="mail-contnet">
-                                        <h5>Arijit singh</h5><span class="time">10:20 AM   20  may 2016</span>
-                                        <br/><span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. Aenean commodo dui pellentesque molestie feugiat</span>
+                                        <h4><b>Conclave</b></h4><span class="time">10:20 AM   20  may 2016</span>
+                                        <br/><span class="mail-desc">Imminent personalities from different fields come together and take part in a debate. Each have a different opinion on the same question, making the conversation highly insightful!</span>
+                                        <a href="javacript:void(0)" class="btn btn btn-rounded btn-default btn-outline m-r-5"><i class="ti-check text-success m-r-5"></i>Register here</a><a href="javacript:void(0)" class="btn-rounded btn btn-default btn-outline"><i class="ti-close text-danger m-r-5"></i> Rule Book</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="panel">
-                            <div class="sk-chat-widgets">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        CHAT LISTING
-                                    </div>
-                                    <div class="panel-body">
-                                        <ul class="chatonline">
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
-                                            </li>
-                                            <li>
-                                                <div class="call-chat">
-                                                    <button class="btn btn-success btn-circle btn-lg" type="button"><i class="fa fa-phone"></i></button>
-                                                    <button class="btn btn-info btn-circle btn-lg" type="button"><i class="fa fa-comments-o"></i></button>
-                                                </div>
-                                                <a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                    </div> -->
                     <!-- /.col -->
                 </div>
             </div>

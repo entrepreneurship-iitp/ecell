@@ -18,7 +18,7 @@
                 $subject = "Your referral Code from E-Cell IIT Patna";
                 $message="Verified!. This is your referral code ".$refcode.". Invite more of your friends with referral code to win exciting goodies from E-Cell IIT Patna.";
                 require('mail.php');
-                header("Location: ./signin/signup.php");
+                header("Location: ./signin/signin.php");
             }
         }
         else{
