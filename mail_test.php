@@ -12,7 +12,7 @@ $to = new SendGrid\Email(null, "vsaisujeeth10@gmail.com");
 $content = new SendGrid\Content("text/plain", "Hello, Email!");
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
-$apiKey = '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';
+$apiKey = ;
 $sg = new \SendGrid($apiKey);
 
 $response = $sg->client->mail()->send()->post($mail);
